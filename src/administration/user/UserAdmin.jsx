@@ -19,7 +19,7 @@ const UserAdmin = (props) => {
           <NL to={`/admin/user/delete/${id}`}><Button>Delete</Button></NL>
           <NL to={`/admin/user/details/${id}`}><Button color="danger"> View </Button></NL>
           <NL to={`/admin/user/adduser/`}><Button> Add new user </Button></NL>
-          <NL to={`/admin/`}><Button color="danger"> Admin </Button></NL>
+          <NL to={`/admin/accueil`}><Button color="danger"> Admin </Button></NL>
         </CardBody>
         <CardFooter>{email}</CardFooter>
       </Card>

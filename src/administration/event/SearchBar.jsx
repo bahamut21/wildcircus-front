@@ -6,10 +6,6 @@ import EventAdmin from './EventAdmin';
 import './SearchBar.scss';
 
 class SearchBar extends Component {
-  // componentWillUnmount() {
-  //   const { asyncSearchFetchWithUrl } = this.props;
-  //   asyncSearchFetchWithUrl('');
-  // }
 
   handleChange = (event) => {
     const { asyncSearchFetchWithUrl } = this.props;
@@ -19,18 +15,12 @@ class SearchBar extends Component {
     asyncSearchFetchWithUrl(route, value, key);
   }
 
-  // onSelectCompany = (company) => {
-  //   const { selectCompany, search } = this.props;
-  //   selectCompany(company);
-  //   search('');
-  // }
-
   render() {
     const {
       searchValue, error, datas,
     } = this.props;
     return (
-      <div className="SearchBar col-12 col-md-6 mr-auto">
+      <div className="SearchBar">
         <input type="text" name="searchEvent" id="searchEvent" value={searchValue} onChange={this.handleChange} placeholder="Find event by name" />
         {
           (error !== '')

@@ -29,7 +29,7 @@ class AddEvent extends Component {
       .then((res) => {
         if (res.ok) {
           NotificationManager.success('', 'Event updated!', 2000);
-          setTimeout(() => history.push('/admin/managecompany'), 1588);
+          setTimeout(() => history.push('/admin/accueil'), 1588);
         } else {
           NotificationManager.warning('', 'Update error.', 2000);
         }

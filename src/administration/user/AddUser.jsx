@@ -11,8 +11,26 @@ import './UpdateUser.scss';
 
 
 class UpdateUser extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      event: [],
+    }
+  };
+
+  displayEvent = () => {
+    fetch(`${urlApi}/event/name/info`)
+      .then(res => res.json())
+      .then((event) => {
+        this.setState({ event })
+      })
+      .catch(() => {
+        NotificationManager.warning('', 'Update error.', 2000);
+      });
+  }
 
   submitEvent = (values) => {
+    const { history } = this.props;
     const data = {
       ...values,
     };
@@ -28,6 +46,7 @@ class UpdateUser extends Component {
       .then((res) => {
         if (res.ok) {
           NotificationManager.success('', 'user updated!', 2000);
+          setTimeout(() => history.push('/admin/accueil'), 1588);
         } else {
           NotificationManager.warning('', 'Update error.', 2000);
         }
@@ -38,6 +57,7 @@ class UpdateUser extends Component {
 
 
   render() {
+    const { event } = this.state;
     const {
       handleSubmit,
     } = this.props;
@@ -128,14 +148,14 @@ class UpdateUser extends Component {
               </div>
             </div>
             <div>
-              <label>select id</label>
-              <div>
-                <Field
-                  name="event_id"
-                  component="input"
-                  type="text"
-                  placeholder=""
-                />
+              <label>Event</label>
+              <div onClick={this.displayEvent}>
+                <Field name="event_id" component="select">
+                  <option />
+                  {
+                    event.map(event => <option value={event.id}>{event.name}</option>)
+                  }
+                </Field>
               </div>
             </div>
             <div>

@@ -42,6 +42,7 @@ class DetailsEvent extends Component {
             <img src={picture5} alt={`event from ${city}`} />
           </div>
           <div>
+          <div>
             desciption :
           {description}
           </div>
@@ -56,6 +57,7 @@ class DetailsEvent extends Component {
           <div>
             tarifs 3 :
           {tarif3}
+          </div>
           </div>
           <NavLink to={`/admin/event`}>
             <Button color="light" type="button">

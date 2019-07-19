@@ -20,7 +20,7 @@ class DeleteUser extends Component {
   }
 
   submitEvent = (values) => {
-    const { match: { params: { id } } } = this.props;
+    const { match: { params: { id } }, history } = this.props;
     const config = {
       method: 'DELETE',
       headers: {
@@ -32,6 +32,7 @@ class DeleteUser extends Component {
       .then((res) => {
         if (res.ok) {
           NotificationManager.success('', 'user updated!',2000);
+          setTimeout(() => history.push('/admin/accueil'), 1588);
         } else {
           NotificationManager.warning('', 'Update error.', 2000);
         }
